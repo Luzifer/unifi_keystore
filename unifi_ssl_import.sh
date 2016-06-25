@@ -19,10 +19,10 @@
 # and be back online immediately.
 
 # CONFIGURATION OPTIONS
-keystore_file=/opt/UniFi/data/keystore
 in_key=/etc/ssl/private/hostname.example.com.key
 in_crt=/etc/ssl/certs/hostname.example.com.crt
 ca_file=/etc/ssl/certs/root_bundle.crt
+keystore_file=/opt/UniFi/data/keystore
 friendly_name=unifi
 password=aircontrolenterprise
 
