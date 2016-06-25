@@ -28,15 +28,18 @@ password=aircontrolenterprise
 
 #### SHOULDN'T HAVE TO MODIFY PAST THIS POINT ####
 
+# Let's DO this!
+printf "Starting import of existing SSL certificate into UniFi Controller...\n"
+
 # Create double-safe keystore backup
 if [ -s "$keystore_file.orig" ]; then
 	printf "\nBackup of original keystore exists!\n"
-	printf "Creating non-destructive backup as keystore.bak...\n"
+	printf "\nCreating non-destructive backup as keystore.bak...\n"
 	cp $keystore_file $keystore_file.bak
 else
 	cp $keystore_file $keystore_file.orig
 	printf "\nNo original keystore backup found.\n"
-	printf "Creating backup as keystore.orig...\n"
+	printf "\nCreating backup as keystore.orig...\n"
 fi
 
 # Export your existing SSL key, cert, and CA data to a PKCS12 file
@@ -45,14 +48,16 @@ openssl pkcs12 -export -in $in_crt -inkey $in_key -certfile $ca_file \
 -out /tmp/unifi.p12 -name $friendly_name -password pass:$password
 
 # Import the newly created PKCS12 file into the UniFi keystore
-printf "\nImporting PKCS12 file into UniFi keystore...\n"
+printf "\nImporting PKCS12 file into UniFi keystore...\n\n"
 keytool -importkeystore -srckeystore /tmp/unifi.p12 -srcstoretype PKCS12 \
 -srcstorepass $password -destkeystore $keystore_file -storepass $password
 
 # Clean up intermediate PKCS12 file
+printf "\nRemoving temporary PKCS12 file...\n\n"
 rm -rf /tmp/unifi.p12
 
 # Restart the UniFi Controller to pick up the updated keystore
+printf "\nRestarting UniFi Controller to apply new SSL certificate\n"
 service UniFi restart
 
 exit
