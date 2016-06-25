@@ -53,11 +53,11 @@ keytool -importkeystore -srckeystore /tmp/unifi.p12 -srcstoretype PKCS12 \
 -srcstorepass $password -destkeystore $keystore_file -storepass $password
 
 # Clean up intermediate PKCS12 file
-printf "\nRemoving temporary PKCS12 file...\n\n"
+printf "\nRemoving temporary PKCS12 file...\n"
 rm -rf /tmp/unifi.p12
 
 # Restart the UniFi Controller to pick up the updated keystore
-printf "\nRestarting UniFi Controller to apply new SSL certificate\n"
+printf "\nRestarting UniFi Controller to apply new SSL certificate...\n"
 service UniFi restart
 
 exit
