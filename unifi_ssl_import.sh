@@ -33,9 +33,9 @@ if [ -s "$keystore_file.orig" ]; then
 	printf "\nBackup of original keystore exists!\n"
 	printf "Creating non-destructive backup as keystore.bak...\n"
 	cp $keystore_file $keystore_file.bak
-elseif [ ! -s "$keystore_file.orig" ]; then
-  cp $keystore_file $keystore_file.orig
-  printf "\nNo original keystore backup found.\n"
+else
+	cp $keystore_file $keystore_file.orig
+	printf "\nNo original keystore backup found.\n"
 	printf "Creating backup as keystore.orig...\n"
 fi
 
