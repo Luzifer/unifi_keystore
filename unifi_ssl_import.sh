@@ -47,6 +47,10 @@ printf "\nExporting SSL certificate and key data into PKCS12 file...\n"
 openssl pkcs12 -export -in $in_crt -inkey $in_key -certfile $ca_file \
 -out /tmp/unifi.p12 -name $friendly_name -password pass:$password
 
+# Delete the previous unifi alias from keystore to avoid "already exists" message
+printf "\nRemoving previous $friendly_name alias from keystore...\n"
+keytool -delete -alias $friendly_name -keystore $keystore_file -deststorepass $password
+
 # Import the newly created PKCS12 file into the UniFi keystore
 printf "\nImporting PKCS12 file into UniFi keystore...\n\n"
 keytool -importkeystore -srckeystore /tmp/unifi.p12 -srcstoretype PKCS12 \
