@@ -4,7 +4,7 @@
 # UniFi Controller SSL Certificate Import Script for Unix/Linux Systems
 # by Steve Jenkins <http://www.stevejenkins.com/>
 # Incorporates ideas from https://source.sosdg.org/brielle/lets-encrypt-scripts
-# Version 2.1
+# Version 2.2
 # Last Updated June 26, 2016
 
 # REQUIREMENTS
@@ -26,7 +26,7 @@ UNIFI_DIR=/opt/UniFi
 UNIFI_SERVICE_NAME=UniFi
 
 # FOR LET'S ENCRYPT SSL CERTIFICATES ONLY
-LE_MODE=yes
+LE_MODE=no
 LE_LIVE_DIR=/etc/letsencrypt/live
 
 # THE FOLLOWING OPTIONS NOT REQUIRED IF LE_MODE IS ENABLED
