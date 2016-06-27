@@ -4,7 +4,7 @@
 # UniFi Controller SSL Certificate Import Script for Unix/Linux Systems
 # by Steve Jenkins <http://www.stevejenkins.com/>
 # Incorporates ideas from https://source.sosdg.org/brielle/lets-encrypt-scripts
-# Version 2.0
+# Version 2.1
 # Last Updated June 26, 2016
 
 # REQUIREMENTS
@@ -23,10 +23,7 @@
 UNIFI_HOSTNAME=hostname.example.com
 UNIFI_DIR=/opt/UniFi
 #UNIFI_DIR=/usr/lib/unifi
-KEYSTORE=${UNIFI_DIR}/data/keystore
 UNIFI_SERVICE_NAME=UniFi
-ALIAS=unifi
-PASSWORD=aircontrolenterprise
 
 # FOR LET'S ENCRYPT SSL CERTIFICATES ONLY
 LE_MODE=yes
@@ -36,6 +33,11 @@ LE_LIVE_DIR=/etc/letsencrypt/live
 PRIV_KEY=/etc/ssl/private/hostname.example.com.key
 SIGNED_CRT=/etc/ssl/certs/hostname.example.com.crt
 CHAIN_FILE=/etc/ssl/certs/startssl-chain.crt
+
+# CONFIGURATION OPTIONS YOU PROBABLY SHOULDN'T CHANGE
+KEYSTORE=${UNIFI_DIR}/data/keystore
+ALIAS=unifi
+PASSWORD=aircontrolenterprise
 
 #### SHOULDN'T HAVE TO TOUCH ANYTHING PAST THIS POINT ####
 
