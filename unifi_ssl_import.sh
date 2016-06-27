@@ -45,7 +45,7 @@ printf "\nStarting UniFi Controller SSL Import...\n"
 
 # Check to see whether Let's Encrypt Mode (LE_MODE) is enabled
 
-if [[ ${LE_MODE} == "yes" || ${LE_MODE} == "y" || ${LE_MODE} == "YES" || ${LE_MODE} == "Y" || ${LE_MODE} == "TRUE" || ${LE_MODE} == "true" || ${LE_MODE} == "enabled" || ${LE_MODE} == 1 ]] ; then
+if [[ ${LE_MODE} == "YES" || ${LE_MODE} == "yes" || ${LE_MODE} == "Y" || ${LE_MODE} == "y" || ${LE_MODE} == "TRUE" || ${LE_MODE} == "true" || ${LE_MODE} == "ENABLED" || ${LE_MODE} == "enabled" || ${LE_MODE} == 1 ]] ; then
 	LE_MODE=true
 	printf "\nRunning in Let's Encrypt Mode...\n"
 	PRIV_KEY=${LE_LIVE_DIR}/${UNIFI_HOSTNAME}/privkey.pem
